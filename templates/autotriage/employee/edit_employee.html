@@ -1,0 +1,30 @@
+{% extends "autotriage/base.html" %}
+{% load static from staticfiles %}
+{% load bootstrap %}
+{% block app_title %}Edit Employee{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="/employee_list">Employees</a></li>
+        <li><a href="/employee/{{employee_id}}">Employee</a></li>
+        <li class="active"><a href=";">Edit</a></li>
+    </ol>
+{% endblock %}
+{% block app_body %}
+<div class="panel panel-default">
+<div class="panel-heading">
+    <h3>Edit Details</h3>
+</div>
+<div class="panel-body">
+    <form method='post' action='/employee_edit/{{employee_id}}'>
+    <fieldset>
+        {{ form|bootstrap_horizontal:'col-lg-4' }}
+        <div class='buttons form-group'>
+            <input type='submit' class="btn btn-primary" value="Save Changes" />
+        </div>
+    </fieldset>
+
+{% csrf_token %}</form>
+    </div>
+  </div>
+{% endblock %}

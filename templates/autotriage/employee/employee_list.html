@@ -1,0 +1,36 @@
+{% extends "autotriage/base.html" %}
+{% load static from staticfiles %}
+{% block app_title %}Employee{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="/">Dashboard</a></li>
+        <li class="active"><a href="/employee_list">Employees</a></li>
+    </ol>
+{% endblock %}
+{% block app_body %}
+
+    <div class="row">
+    {% if employees %}
+        {% for employee in employees%}
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="panel panel-default panel-member">
+                    <div class="panel-body">
+                        <a href="/employee/{{employee.id}}">
+                            <div class="text-center">
+                                <img src="{% static 'autotriage/images/default.png' %}" class="img-circle" alt="image">
+
+                                <h4 class="thin">
+                                    {{employee.first_name}}
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>No Employees are present</div>
+    {% endif %}
+    </div>
+
+{% endblock %}
